@@ -1,0 +1,87 @@
+﻿@model StudentTask.Model.Student.StudentModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<link href="~/css/form.css" rel="stylesheet" />
+
+
+<form asp-action="AddStudent" enctype="multipart/form-data" asp-controller="Student" method="post" class="animated-form">
+
+    <div class="form-group animated fadeInLeft">
+        <label asp-for="FirstName">First Name:</label>
+        <input asp-for="FirstName" class="form-control dark-input" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group animated fadeInRight">
+        <label asp-for="LastName">Last Name:</label>
+        <input asp-for="LastName" class="form-control dark-input" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group animated fadeInLeft">
+        <label>Gender:</label><br />
+        <label><input type="radio" asp-for="Gender" value="Male" /> Male</label>
+        <label><input type="radio" asp-for="Gender" value="Female" /> Female</label>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+
+    <div class="form-group animated fadeInRight">
+        <label asp-for="EmailId">Email:</label>
+        <input asp-for="EmailId" class="form-control dark-input" />
+        <span asp-validation-for="EmailId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group animated fadeInLeft">
+        <label asp-for="Password">Password:</label>
+        <input asp-for="Password" type="password" class="form-control dark-input" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+@*
+    <div class="form-group animated fadeInRight">
+        <label asp-for="ProfilePicture">Profile Picture:</label>
+        <input asp-for="ProfilePicture" type="file" class="form-control-file dark-input" />
+        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+    </div>*@
+
+    <div class="form-group animated fadeInRight">
+        <label asp-for="ProfilePic" class="form-label"></label>
+        <input class="form-control" asp-for="ProfilePic" id="formFile">
+    </div>
+
+    <div class="form-group animated fadeInLeft">
+        <label>Skills:</label><br />
+        <label><input type="checkbox" asp-for="Skills" value="Cricket" /> Cricket</label><br />
+        <label><input type="checkbox" asp-for="Skills" value="Football" /> Football</label><br />
+        <label><input type="checkbox" asp-for="Skills" value="Hockey" /> Hockey</label>
+        <span asp-validation-for="Skills" class="text-danger"></span>
+    </div>
+
+    <div class="form-group animated fadeInRight">
+        <label asp-for="Remarks">Remarks:</label>
+        <textarea asp-for="Remarks" class="form-control dark-input"></textarea>
+        <span asp-validation-for="Remarks" class="text-danger"></span>
+    </div>
+
+    <div class="form-group animated fadeInLeft">
+        <label asp-for="Country">Country:</label>
+        <select asp-for="Country" class="form-control dark-input">
+            <option value="3">USA</option>
+            <option value="2">China</option>
+            <option value="1">India</option>
+            <!-- Add more country options as needed -->
+        </select>
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary mt-4">Add Student</button>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+ 
